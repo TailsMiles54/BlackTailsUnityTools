@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace BlackTailsUnityTools.Runtime
+namespace BlackTailsUnityTools.Editor
 {
     public static class SettingsProviderCreator
     {

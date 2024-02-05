@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace BlackTailsUnityTools.Runtime
+namespace BlackTailsUnityTools.Editor
 {
     public class SettingsProvider : ScriptableObject
     {
