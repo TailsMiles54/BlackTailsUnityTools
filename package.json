@@ -1,0 +1,18 @@
+{
+  "name": "com.blacktails.blacktailstools",
+  "version": "1.0.0",
+  "displayName": "Black Tails Tools",
+  "description": "Just a set of useful tools in my opinion",
+  "unity": "2022.3",
+  "keywords": [
+    "blacktails",
+    "tools",
+    "blacktailstools"
+  ],
+  "author": {
+    "name": "BlackTails",
+    "email": "tailsmiles2015b@gmail.com",
+    "telegram": "@tailsmiles322"
+  },
+  "unityRelease": "18f1"
+}
