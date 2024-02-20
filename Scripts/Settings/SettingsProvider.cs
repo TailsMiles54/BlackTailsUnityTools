@@ -13,7 +13,7 @@ namespace BlackTailsUnityTools.Editor
         public static T Get<T>() where T : ScriptableObject
         {
             if (_settingsProvider == null)
-            {
+            { 
                 _settingsProvider = Resources.Load<SettingsProvider>("SettingsProvider");
             }
         
