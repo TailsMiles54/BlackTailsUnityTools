@@ -19,5 +19,17 @@ namespace BlackTailsUnityTools.Editor
         
             return (T)_settingsProvider._settingsList.First(x => x is T);
         }
+        
+        public static SettingsProvider CreateInstance(List<ScriptableObject> settingsList)
+        {
+            var data = ScriptableObject.CreateInstance<SettingsProvider>();
+            data.Init(settingsList);
+            return data;
+        }
+        
+        private void Init(List<ScriptableObject> settingsList)
+        {
+            this._settingsList = settingsList;
+        }
     }
 }
