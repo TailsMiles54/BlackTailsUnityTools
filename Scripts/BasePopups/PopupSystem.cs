@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using BlackTailsUnityTools.Editor;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 using SettingsProvider = BlackTailsUnityTools.Editor.SettingsProvider;
 
 public class PopupSystem : MonoSingleton<PopupSystem>
@@ -30,17 +32,51 @@ public class PopupSystem : MonoSingleton<PopupSystem>
         _currentPopup = null;
         _background.SetActive(false);
     }
-    
-    [ MenuItem("GameObject/BlackTailsObjects/PopupSystem")]
-    private static void CreateArrowSelector()
-    {
-        // Create a custom game object
-        GameObject go = new GameObject("PopupSystem");
 
-        go.AddComponent<PopupSystem>();
-        
-        // Register the creation in the undo system
-        Undo.RegisterCreatedObjectUndo(go, "Create " + go.name);
-        Selection.activeObject = go;
+    public void Setup(GameObject background, Transform popupParent)
+    {
+        _background = background;
+        _popupParent = popupParent;
+    }
+    
+    [MenuItem("GameObject/BlackTailsObjects/PopupSystem")]
+    private void CreateArrowSelector()
+    {
+        var hasPopupSystem = FindObjectOfType<PopupSystem>();
+        if(!hasPopupSystem)
+        {
+            var canvas = FindObjectOfType<Canvas>();
+            if (!canvas)
+            {
+                var canvasGO = new GameObject("Canvas");
+                canvasGO.AddComponent<Canvas>();
+                canvas = canvasGO.GetComponent<Canvas>();
+            }
+
+            var popupParent = canvas.transform.Find("PopupParent");
+            if (popupParent)
+            {
+                var popupParentGO = new GameObject("PopupParent");
+                popupParent = popupParentGO.transform;
+            }
+
+            var popupBackground = canvas.transform.Find("PopupBackground");
+            if (popupBackground)
+            {
+                var popupBackgroundGO = new GameObject("PopupParent");
+                popupBackground.AddComponent<Image>();
+                popupBackground = popupBackgroundGO.transform;
+            }
+
+            // Create a custom game object
+            GameObject go = new GameObject("PopupSystem");
+
+            var popupSystem = go.AddComponent<PopupSystem>();
+            popupSystem.Setup(popupBackground.gameObject, popupParent);
+
+            // Register the creation in the undo system
+            Undo.RegisterCreatedObjectUndo(go, "Create " + go.name);
+            Selection.activeObject = go;
+        }
     }
 }
