@@ -39,8 +39,8 @@ public class PopupSystem : MonoSingleton<PopupSystem>
         _popupParent = popupParent;
     }
     
-    [MenuItem("GameObject/BlackTailsObjects/PopupSystem")]
-    private void CreateArrowSelector()
+    /*[MenuItem("GameObject/BlackTailsObjects/PopupSystem")]
+    public void CreateArrowSelector()
     {
         var hasPopupSystem = FindObjectOfType<PopupSystem>();
         if(!hasPopupSystem)
@@ -78,5 +78,11 @@ public class PopupSystem : MonoSingleton<PopupSystem>
             Undo.RegisterCreatedObjectUndo(go, "Create " + go.name);
             Selection.activeObject = go;
         }
+    }*/
+    
+    [MenuItem("GameObject/MyCategory/Custom Game Object", false, 10)]
+    public void Test()
+    {
+        Debug.Log("test");
     }
 }
