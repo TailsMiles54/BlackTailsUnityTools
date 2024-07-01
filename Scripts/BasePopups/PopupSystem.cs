@@ -115,7 +115,7 @@ public class PopupSystem : MonoSingleton<PopupSystem>
             Undo.RegisterCreatedObjectUndo(popupSystemgo, "Create " + popupSystemgo.name);
             Selection.activeObject = popupSystemgo;
         }
-    }*/
+    }
     
     [MenuItem("GameObject/MyCategory/Custom Game Object", false, 10)]
     public void Test()
