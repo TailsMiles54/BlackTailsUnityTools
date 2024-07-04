@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace BlackTailsUnityTools.Editor
 {
-    public class PrefabsSettings : ScriptableObject
+    public partial class PrefabsSettings : ScriptableObject
     {
         [SerializeField] private List<MonoBehaviour> _gameObjects;
         
