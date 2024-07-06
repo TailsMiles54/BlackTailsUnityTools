@@ -65,15 +65,6 @@ public class PopupSystem : MonoSingleton<PopupSystem>
                 canvas = go.GetComponent<Canvas>();
             }
 
-            var popupParent = canvas.transform.Find("PopupParent").GameObject();
-            if (!popupParent)
-            {
-                popupParent = new GameObject("PopupParent");
-                SetParentAndAlign(popupParent, canvas.gameObject);
-                Undo.RegisterCreatedObjectUndo(popupParent, "Create " + popupParent.name);
-                Selection.activeObject = popupParent;
-            }
-
             var popupBackground = canvas.transform.Find("PopupBackground").GameObject();
             if (!popupBackground)
             {
@@ -103,6 +94,15 @@ public class PopupSystem : MonoSingleton<PopupSystem>
                 Selection.activeObject = popupBackground;
             }
 
+            var popupParent = canvas.transform.Find("PopupParent").GameObject();
+            if (!popupParent)
+            {
+                popupParent = new GameObject("PopupParent");
+                SetParentAndAlign(popupParent, canvas.gameObject);
+                Undo.RegisterCreatedObjectUndo(popupParent, "Create " + popupParent.name);
+                Selection.activeObject = popupParent;
+            }
+
             // Create a custom game object
             GameObject popupSystemgo = new GameObject("PopupSystem");
 
@@ -117,13 +117,7 @@ public class PopupSystem : MonoSingleton<PopupSystem>
         }
     }
     
-    [MenuItem("GameObject/MyCategory/Custom Game Object", false, 10)]
-    public void Test()
-    {
-        Debug.Log("test");
-    }
-    
-    static public GameObject CreateNewUI()
+    private static GameObject CreateNewUI()
     {
         // Root for the UI
         var root = ObjectFactory.CreateGameObject("Canvas", typeof(Canvas), typeof(CanvasScaler), typeof(GraphicRaycaster));
